@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple calculator</title>
+    <link rel="stylesheet" href="style.css">
     <script src="./main.js"></script>
     <script src="./calculator.js"></script>
+    <script>
+        window.onload = function() {
+            showVersion();
+        }
+    </script>
 </head>
 <body>
-    <h1>Simple calculator</h1>
+    <h1 class="page-title">Simple calculator</h1>
 
-    <input type="text" onchange="calculate(this.value)">
+    <input class="input-value" type="text" onchange="calculate(this.value)">
 
-    <div>
-        <h3>Result</h3>
+    <div class="result-container">
+        <span class="result-label">Result: </span>
         <span id="result-content"></span>
     </div>
+
+    <footer>Version <span id="version"></span></footer>
 </body>
 </html>

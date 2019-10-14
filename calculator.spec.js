@@ -34,5 +34,46 @@ describe('calculator.js', () => {
 
                 expect(calculator.total).toBe(5);
             });
+
+            it('should init total', function () {
+                const calculator = new Calculator();
+
+                expect(calculator.total).toBe(0);
+                expect(calculator.total).toBeFalsy();
+            });
+
+            it('constructor exist', function(){
+                const calculator = new Calculator();
+                const calculator2 = new Calculator();
+
+                expect(calculator).toBeTruthy();
+                expect(calculator2).toBeTruthy();
+                expect(calculator).toEqual(calculator2);
+            });
+
+            it('total', function (){
+                const calculator = new Calculator();
+                calculator.total = 80;
+
+                expect(calculator.add(20)).toBe(100);
+                expect(calculator.total).toMatch(/-?\d+/);
+                expect(typeof calculator.total).toMatch('number');
+            });
+
+
+    });
+    
+    describe("get version", function() {
+       it("external version", async function (done){
+           const calculator = new Calculator();
+           spyOn(window, "fetch").and.returnValue(Promise.resolve(
+               new Response('{"version": "0.1"}')
+           ));
+
+            const version = await calculator.version
+               expect(version).toBe("0.1");
+
+               done();
+       });
     });
 });
