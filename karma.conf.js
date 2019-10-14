@@ -1,26 +1,31 @@
 module.exports = function (config) {
     config.set({
-        frameworks: ['jasmine', 'jasmine-matchers'],
+        frameworks: ["jasmine", "jasmine-matchers"],
         preprocessors: {
-            '*.js': 'coverage'
+            "*.js": "coverage"
         },
         files: [
-            '*.js',
-            '*.spec.js'
+            "*.js",
+            "*.spec.js"
         ],
         plugins: [
-            'karma-jasmine', 
-            'karma-jasmine-matchers', 
-            'karma-chrome-launcher',
-            'karma-coverage'
+            "karma-jasmine", 
+            "karma-jasmine-matchers", 
+            "karma-chrome-launcher",
+            "karma-coverage"
         ],
-        reports: ['dots', 'coverage'],
+        reporters: ["dots", "coverage"],
         color: true,
-        browsers: ['ChromeHeadless'],
+        browsers: ["ChromeHeadless"],
         singleRun: true,
         coverageReporter: {
-            type: 'html',
-            dir: 'coverage/'
+            dir: "coverage/",
+            reporters: [
+                {
+                    type: "html",
+                    subdir: "html"
+                }
+            ]
         }
     });
 };
